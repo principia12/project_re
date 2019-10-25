@@ -1,0 +1,307 @@
+\documentclass[twoside]{article}
+
+\usepackage{lipsum} % Package to generate dummy text throughout this template
+
+\usepackage[sc]{mathpazo} % Use the Palatino font
+\usepackage[T1]{fontenc} % Use 8-bit encoding that has 256 glyphs
+\linespread{1.05} % Line spacing - Palatino needs more space between lines
+\usepackage{microtype} % Slightly tweak font spacing for aesthetics
+
+\usepackage[hmarginratio=1:1,top=32mm,columnsep=20pt]{geometry} % Document margins
+\usepackage{multicol} % Used for the two-column layout of the document
+\usepackage[hang, small,labelfont=bf,up,textfont=it,up]{caption} % Custom captions under/above floats in tables or figures
+\usepackage{booktabs} % Horizontal rules in tables
+\usepackage{float} % Required for tables and figures in the multi-column environment - they need to be placed in specific locations with the [H] (e.g. \begin{table}[H])
+\usepackage[colorlinks=false]{hyperref} % For hyperlinks in the PDF
+
+\usepackage{lettrine} % The lettrine is the first enlarged letter at the beginning of the text
+\usepackage{paralist} % Used for the compactitem environment which makes bullet points with less space between them
+
+\usepackage{braket}
+\usepackage{array}
+\usepackage{calc}
+\usepackage{graphicx}
+
+\usepackage{listings}
+\usepackage{color}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{adjustbox}
+\usepackage{kotex}
+\usepackage{multirow}
+
+\usepackage{avm}
+
+\usepackage[bottom]{footmisc}
+
+\avmfont{\sc}
+\avmoptions{sorted,active}
+\avmvalfont{\rm}
+\avmsortfont{\scriptsize\it}
+
+\graphicspath{{images/}}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\usepackage{xcolor}
+\usepackage[table,xcdraw]{xcolor}
+\colorlet{punct}{red!60!black}
+\definecolor{background}{HTML}{EEEEEE}
+\definecolor{delim}{RGB}{20,105,176}
+\colorlet{numb}{magenta!60!black}
+
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+
+\newtheorem{define}{Definition}
+\newtheorem{imp}{Implementation}[define]
+
+\hypersetup{%
+    pdfborder = {0 0 0}, 
+    colorlinks = false, 
+    urlcolor = blue,
+    pageanchor=false,
+}
+
+
+\newcommand\fig[2]{
+\begin{figure}[h]
+  \centering
+  \includegraphics[width = \textwidth]{#1}
+  \caption{#2} 
+  \label{fig:#1}
+\end{figure}
+}
+
+
+\usepackage{abstract} % Allows abstract customization
+\renewcommand{\abstractnamefont}{\normalfont\bfseries} % Set the "Abstract" text to bold
+\renewcommand{\abstracttextfont}{\normalfont\small\itshape} % Set the abstract itself to small italic text
+
+% \usepackage{titlesec} % Allows customization of titles
+% \renewcommand\thesection{\Roman{section}} % Roman numerals for the sections
+% \renewcommand\thesubsection{\Roman{subsection}} % Roman numerals for subsections
+% \titleformat{\section}[block]{\large\scshape\centering}{\thesection.}{1em}{} % Change the look of the section titles
+% \titleformat{\subsection}[block]{\large}{\thesubsection.}{1em}{} % Change the look of the section titles
+
+%\renewcommand\thesubsubsection{\Roman{subsubsection}}
+%\titleformat{\subsubsection}[block]{\large}{\thesubsubsection.}{1em}{}
+
+\setcounter{secnumdepth}{3}
+\setcounter{section}{0}
+\usepackage{fancyhdr} % Headers and footers
+\pagestyle{fancy} % All pages have headers and footers
+\fancyhead{} % Blank out the default header
+\fancyfoot{} % Blank out the default footer
+\fancyhead[C]{ 강남 파이썬 오픈소스 스터디  } % Custom header text
+\fancyfoot[C]{\thepage} % Custom footer text
+
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+
+
+\title{\vspace{-15mm}\fontsize{24pt}{10pt}\selectfont\textbf{ Project myre  }} % Article title
+
+\author{
+\large
+\textsc{신승우}\\[2mm]
+\normalsize Python Open Source Study \\ % Your institution
+\vspace{-5mm}
+}
+\date{}
+
+
+\renewcommand{\lstlistingname}{Implementation}
+\renewcommand{\lstlistlistingname}{List of \lstlistingname s}
+
+\lstdefinestyle{python}{frame=tb,
+  language=Python,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=4
+}
+    
+\lstdefinestyle{stdout}{frame=tb,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=4
+}
+    
+    
+\lstdefinestyle{json}{
+    basicstyle=\normalfont\ttfamily,
+    numbers=left,
+    numberstyle=\scriptsize,
+    stepnumber=1,
+    numbersep=8pt,
+    showstringspaces=false,
+    breaklines=true,
+    frame=lines,
+    backgroundcolor=\color{background},
+    literate=
+     *{0}{{{\color{numb}0}}}{1}
+      {1}{{{\color{numb}1}}}{1}
+      {2}{{{\color{numb}2}}}{1}
+      {3}{{{\color{numb}3}}}{1}
+      {4}{{{\color{numb}4}}}{1}
+      {5}{{{\color{numb}5}}}{1}
+      {6}{{{\color{numb}6}}}{1}
+      {7}{{{\color{numb}7}}}{1}
+      {8}{{{\color{numb}8}}}{1}
+      {9}{{{\color{numb}9}}}{1}
+      {:}{{{\color{punct}{:}}}}{1}
+      {,}{{{\color{punct}{,}}}}{1}
+      {\{}{{{\color{delim}{\{}}}}{1}
+      {\}}{{{\color{delim}{\}}}}}{1}
+      {[}{{{\color{delim}{[}}}}{1}
+      {]}{{{\color{delim}{]}}}}{1},
+}
+
+\newcommand\code[4]{
+\lstinputlisting[style=python, linerange = {#3-#4}, caption={#1 (#2)}]{"./examples/#2"}}
+
+
+
+%----------------------------------------------------------------------------------------
+
+\begin{document}
+
+\maketitle % Insert title
+
+
+
+%----------------------------------------------------------------------------------------
+%	ARTICLE CONTENTS
+%----------------------------------------------------------------------------------------
+
+
+
+% \tableofcontents
+
+% \newpage
+
+
+%\thispagestyle{fancy} % All pages have headers and footers
+%----------------------------------------------------------------------------------------
+%	ARTICLE CONTENTS
+%----------------------------------------------------------------------------------------
+
+
+
+
+
+% \fig{python-install1}{파이썬 설치과정} 
+
+% \code{util functions}{util.py}{1}{10}
+
+
+\section{사전지식} 
+
+\subsection{정규표현식 (Regular Expression)}
+
+\paragraph{정규표현식이란?} 정규표현식은 특정한 형식을 가진 문자열로써, 다른 문자열들 여러 개를 표현하는데 쓰인다. 조금 더 수학적으로 말하면, 정규표현식은 문자열의 집합을 나타내는 형식이라고 볼 수도 있다. 
+
+\paragraph{정규표현식을 쓰는 이유} 문자열을 다루다 보면 특정 조건을 만족하는 문자열인지를 체크해야 할 필요가 있는 경우가 많다. 예를 들어서, 날짜를 나타내기 위해서는 연, 월, 일을 나타내야 하며, 이들 각각은 4자리, 2자리, 2자리의 숫자로 나타낼 수 있다\footnote{1월 같은 경우는 01과 같이, 0을 앞에 넣어 두 자리로 고정하는 것으로 생각하자.}. 따라서 이러한 조건을 만족하는지를 체크하는 함수를 다음과 같이 작성할 수 있다. 
+
+\code{check dates}{checkdate.py}{1}{5}
+
+위와 같은 체크 방법에는 크게 두 가지 문제가 있다. 
+\begin{itemize}
+\item 매번 함수를 새로 작성해야 한다. 이는 번거롭기도 하고, 비슷한 패턴들에 대해서도 각각 함수를 다 작성해야 하는 것 자체가 불필요한 일일 수 있다. 예를 들어서, 날짜를 20190101과 같은 형태로 나타내는 것과, 2019-01-01과 같이 나타내는 것은 사실상 매우 비슷한 패턴이지만, 위 check\_date와 같이 함수를 작성하면 이를 재활용하기가 어렵다. 
+\item 또 위 체크 방법은 틀렸다. 예를 들어서, 저런 방식의 경우 20191040같은 것도 날짜로 보겠지만, 이는 잘못된 날짜이다. 따라서 각 문자가 숫자임을 체크하는 것으로는 충분하지 않다. 이는 많은 경우에 그러한데, 예를 들어서 주민등록번호라면 뒷자리의 첫 번째 숫자가 1 혹은 2여야 한다. 따라서 조금 더 세밀하게 문자열을 검사할 필요가 있다. 
+\end{itemize}
+
+따라서 위 두 문제를 해결하기 위해서 다음과 같이 생각할 수 있다. 
+
+\begin{itemize} 
+\item 많이 쓰이는 가장 atomic한 패턴을 정의한 후, 이를 체크하는 함수들을 미리 짜놓는다. 예를 들어서,  앞에서 나온 날짜를 쓰는 방법 두 가지는 모두 어떤 문자열이 숫자인지를 체크하는 과정이 필요하다. 이를 함수로 미리 정의해놓고 재사용한다면 더 편하게 구현할 수 있을 것이다. 
+\item 문자열을 체크하는 함수를 구현할 때 다양한 인자를 받을 수 있도록 한다. 예를 들어서, 위 날짜의 경우 비단 숫자인지만 체크하는 것이 아니라 어떤 숫자인지 역시 체크할 수 있도록 하면 편할 것 같다. 그렇게 하는 것으로 월은 1월부터 12월까지만 가능하게 하는 식으로 할 수 있도록 함수를 유연하게 구현하면 된다. 
+\end{itemize}
+
+먼저 첫 번째 해결책부터 적용해보자. 다음과 같이 생각할 수 있다. 
+
+\code{check\_numeric 함수 추가}{checkdate.py}{7}{13}
+
+check\_numeric  함수를 이용하면 숫자인지를 편하게 체크할 수 있고 다른 형식의 패턴을 체크할 때도 광범위하게 쓰일 수 있으므로 재사용성을 늘릴 수 있을 것 같다. 그렇다면 이번에는 두 번째 문제를 해결해 보자. 
+
+\code{check\_numeric 함수 추가}{checkdate.py}{15}{31}
+
+이와 같이 하면 대부분의 숫자 관련 문자열 점검에서 check\_numeric 함수를 사용할 수 있을 것이라고 생각된다. 하지만, 이 역시 상당히 길고 복잡하다고 볼 수 있다. 왜냐하면 사실상 check\_numeric 함수에서 쓰이는 것은 start와 end 두 숫자만 쓰이기 때문에, 이를 잘 wrapping하는 형식을 만들면 숫자 두 개만 가지고 check\_numeric 함수를 대체할 수 있을 것이라고 기대할 수 있다. 예를 들어서, [n-m]같은 형식의 문자열을 파싱하여 위와 같은 함수를 자동으로 생성할 수 있다면 매우 편리할 것이다. 
+
+이를 위해서 많이 쓰이는 패턴들을, 매번 함수를 작성하는 것이 아니라 특정 형식을 가진 문자열로써 편하게 나타내어 이 문자열을 파싱하여 자동으로 내가 의도한 패턴을 체크하는 함수를 생성하는 것이 정규표현식이라고 할 수 있다. 
+
+\newpage
+
+\section{구현 진행}
+
+\paragraph{10.28 구현사항} 아래의 함수 2개를 구현해본다. 
+
+\begin{itemize} 
+\item check(pattern : str) $\rightarrow$ boolean : 주어진 문자열 pattern이 정규표현식이 맞으면 True, 틀리면 False를 반환. 
+\item exact\_match(pattern: str, text: str) $\rightarrow$ boolean : 주어진 정규표현식 pattern과 문자열 text에 대해서, 문자열 text가 pattern이 나타내는 문자열의 집합에 포함되었다면 True. 아니라면 False. 만약 pattern이 정규표현식이 아니라면 ValueError를 raise한다. 
+\end{itemize}
+
+
+\paragraph{check} check 함수는 주어진 문자열이 정규표현식이 맞는지를 체크하여, 맞으면 True, 틀리면 False를 반환하는 함수이다. \footnote{파이썬에 내장된 함수는 아니지만, 정규표현식을 구현하기 위해서는 이러한 체크 함수가 있어야 하기에 추가하였음} 
+
+\paragraph{exact\_match} exact\_match 함수는 주어진 패턴과 텍스트가 일치하는지를 검사한다. 패턴은 정규표현식 문법을 따르는 문자열이고, text는 일반 문자열이다. 이 때, 패턴이 따라야 하는 스펙은 아래와 같다. 아래 스펙에서 expr은 정규표현식 스펙을 만족하는 문자열을 의미한다. \footnote{이 역시 파이썬에 있는 함수는 아니지만, 본격적인 구현 전에 구현해놓으면 앞으로 계속 쓸 수 있기 때문에 구현하면 좋을 것으로 생각됨.} 
+
+% Please add the following required packages to your document preamble:
+
+% If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
+\begin{table}[h]
+\begin{tabular}{|l|l|l|l|}
+\hline
+\rowcolor[HTML]{C0C0C0} 
+패턴 & 설명 & 예시 & 비고 \\ \hline
+알파벳 &  (a) & a, b, ...   & 우선은 한글을 다루지 않기로 함. \\ \hline
+숫자 & (a)  & 0,1,..   &  \\ \hline
+공백 & (a)  &  &  \\ \hline
+특수문자들 & (e)  & (e)   &  \\ \hline
+\textbackslash + 특수문자들 & (a)  &   & (d) \\ \hline
+expr1 expr2  & (b) & (c)  & (d) \\ \hline
+expr1 | expr2  & (f) & (g)  &  \\ \hline
+\end{tabular}
+\end{table}
+
+\begin{description}
+\item[(a)] 패턴이 나타내는 문자열의 집합은 패턴 그 자체이다. 예를 들어서, 패턴이 '1'이라면 나타내는 문자열도 '1' 하나이다. 
+\item[(b)] 식 expr1, expr2를 만족하는 문자열이 연결되어있음을 나타냄.
+\item[(c)] ab의 경우, a도 정규표현식이며 b도 정규표현식이므로 ab를 이어놓은 것 역시 정규표현식이다. 
+\item[(d)] 보기 편하기 위해서 가운데에 공백이나 + 기호가 있으나, 실제로 공백이 있는 것은 아니다. 
+\item[(e)] 정규표현식에서는 다양한 특수문자들을 제공한다. 우선 여기서는 .만을 다루기로 한다. 
+\begin{itemize} 
+\item . : wildcard. 1개의 임의의 문자에 대응된다. 예를 들어서, a. 은 a로 시작하고, 뒤에 아무 글자나 하나 붙어 있는 문자열들을 전부 나타낸다. 예를 들어서, ab는 a 뒤에 b라는 글자가 하나 있으므로 이는 a.과 match된다. 다른 예로, abc는 a뒤에 b,c 두 글자가 있으므로 match되지 않는다. 
+\end{itemize}
+\item[(f)] expr1과 match되는 문자열이거나 expr2과 match되는 문자열. 
+\item[(g)] a|b의 경우 a혹은 b를 나타냄. 따라서 a, b 둘 다 match됨. 
+
+\end{description}
+
+
+
+\end{document}
