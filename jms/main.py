@@ -1,5 +1,5 @@
 
-from .re import Pattern
+from .pattern import Pattern
 
 
 def check(ptn_str):
@@ -11,8 +11,8 @@ def check(ptn_str):
         return True
 
 
-def exact_match(ptn_str, text):
+def match(ptn_str, text):
     ptn = Pattern(ptn_str)
-    return ptn.exact_match(text)
+    return ptn.match(text)
 
 
