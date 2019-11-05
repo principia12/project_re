@@ -7,3 +7,6 @@
 
 __pycache__
 
+jms_old
+venv
+*.pyc
